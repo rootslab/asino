@@ -1,0 +1,38 @@
+{
+  "name": ""
+  , "version": "0.0.1"
+  , "description": "Asino."
+  , "homepage": "https://github.com/rootslab/asino"
+  , "private": false
+  , "repository": {
+    "type": "git"
+    , "url": "git://github.com/rootslab/asino.git"
+  }
+  , "keywords": [
+    "hazz"
+  ]
+  , "author": {
+    "name": "Guglielmo Ferri"
+    , "email": "44gatti@gmail.com"
+  }
+  , "dependencies": {
+    "bolgia" : ">=2.8.0"
+    , "hazz" : ">=0.5.0"
+    , "toni" : ">=0.6.0"
+  },
+  "devDependencies": {
+     "dado" : ">=0.2.0"
+  }
+  , "main": "index"
+  , "engines": {
+    "node": ">=0.10.x"
+  }
+  , "scripts": {
+    "test": "node test/run.js"
+  }
+  , "license": "MIT"
+  , "readmeFilename": "Readme.md"
+  , "bugs": {
+    "url": "https://github.com/rootslab/asino/issues"
+  }
+}
