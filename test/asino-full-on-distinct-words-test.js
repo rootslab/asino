@@ -10,7 +10,7 @@ exports.test  = function ( done, assertions ) {
 		, max = Math.max
 		, Bop = require( 'bop' )
         , Asino = require( '../' )
-        // default options
+        // options for current test
         , opt = {
 			epop: 5000
 			, ilen : 32
