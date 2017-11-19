@@ -1,6 +1,6 @@
 {
-  "name": "Asino"
-  , "version": "0.1.1"
+  "name": "asino"
+  , "version": "0.2.0"
   , "description": "Asino, a stubborn, simple and fast Bloom filter for the rest of us."
   , "homepage": "https://github.com/rootslab/asino"
   , "private": false
