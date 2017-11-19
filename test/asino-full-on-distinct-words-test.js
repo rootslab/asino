@@ -32,8 +32,11 @@ exports.test  = function ( done, assertions ) {
         , grow_attempts = 0
         ;
 
-    log( '\n- data file path:', filepath );
+    log( '\n- reliable assumption: the input data is a set of distinct words (no duplicates)' );
+    log( '- desired outcome: produce a bloom filter, without false positives, in a finite time' );
 
+
+    log( '\n- data file path:', filepath );
     log( '\n- %d distinct english words loaded.', offsets.length );
 
     // split strings and get max input length
@@ -53,7 +56,7 @@ exports.test  = function ( done, assertions ) {
     // create bloom filter
     don = Asino( opt );
 	
-	log( '\n- try to use %d hash functions', opt.hfn );
+	log( '\n- try to use %d hash functions (fpp: %d)', don.hfn, don.fpp );
 
     while ( grow_attempts < 10 ) {
 	    while ( refresh_attempts < 10 ) {
@@ -80,11 +83,11 @@ exports.test  = function ( done, assertions ) {
 		// grow only the number of functions
 		don.grow( { hfn : ++opt.hfn } );
 		assert.ok( don.hfn === opt.hfn, 'wrong number of functions!! should be: ' + opt.hfn + ' is: ' + don.hfn );
-		log( '\n- try to use %d hash functions', opt.hfn );
+		log( '\n- try to use %d hash functions (fpp: %d)', don.hfn, don.fpp );
 		++grow_attempts;
 	};
-	if ( ! collisions ) log( '\n -> ok, no collisions (false postiives)!' );
-	assert.ok( ! collisions, 'no collisions should be found at this point!' );
+	if ( ! collisions ) log( '\n -> ok, no collisions! (no false positives!), test passed.' );
+	assert.ok( ! collisions, 'test failed, no collisions should be found at this point!' );
 
     exit();
 };
