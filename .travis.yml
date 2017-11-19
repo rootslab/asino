@@ -20,4 +20,4 @@ script: istanbul cover -v test/run.js
 after_script:
  - codeclimate-test-reporter < coverage/lcov.info
 env: 
- - CODECLIMATE_REPO_TOKEN= 66855de0eb10a3c0a4d246a090c8254cc0f48d9a3ebe60c866e0aae35976eaca
+ - CODECLIMATE_REPO_TOKEN=66855de0eb10a3c0a4d246a090c8254cc0f48d9a3ebe60c866e0aae35976eaca

@@ -65,7 +65,7 @@ opt = {
 	 * The max number of bytes to parse from every 
 	 * input element, using the pseudo-random table.
 	 * In normal mode you should specify this property
-	 * generally sizing it on the input length.
+	 * generally sizing it on the expected input length.
 	 *
 	 * When dunce mode is on, this property is ignored,
 	 * because no pseduo-random table will be generated.
@@ -177,7 +177,7 @@ opt : { [ hfn: Number ,] [epop: Number ,] [ilen : Number,] [dunce: Boolean] }
 
 ```
 
-> See [examples](example/).
+> See __[examples](example/)__.
 
 ### MIT License
 
