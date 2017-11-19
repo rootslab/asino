@@ -16,7 +16,7 @@
 [![NPM GRAPH](https://nodei.co/npm/asino.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/asino/)
 
 
-> __Asino__, a stubborn, simple and fast Bloom filter for the rest of us.
+> __Asino__, a stubborn, simple and fast __Bloom filter__ for the rest of us.
 
 
 ### Install
