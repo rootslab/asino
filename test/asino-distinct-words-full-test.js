@@ -53,7 +53,7 @@ exports.test  = function ( done, assertions ) {
 
 	log( '\n- init bloom filter with:', opt );
 
-	log( '\n-> dunce mode is %s:', opt ? 'on' : 'off' );
+	log( '\n-> dunce mode is %s:', opt.dunce ? 'on' : 'off' );
 
 	// create bloom filter
 	don = Asino( opt );

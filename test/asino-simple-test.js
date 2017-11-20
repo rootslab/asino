@@ -9,7 +9,7 @@ exports.test  = function ( done, assertions ) {
 		, Asino = require( '../' )
 		// options for current test
 		, opt = {
-			epop: 10
+			epop: 100
 			, hfn: 2
 			, ilen : 34
 			// enable or disable dunce mode
