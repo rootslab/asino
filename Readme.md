@@ -157,8 +157,7 @@ Asino#key( Buffer data ) : Boolean
 
 /*
  * try to add the element if it doesn't exist.
- * It returns the same result of Asino#key,
- *
+ * It returns the same result of Asino#key
  */
 Asino#try( Buffer data ) : Boolean
 
