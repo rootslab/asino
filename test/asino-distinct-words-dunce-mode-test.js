@@ -1,5 +1,10 @@
 /*
- * Asino full test on a set of disinct words.
+ * Asino full test on a set of disinct words in dunce mode.
+ * Results should be the same on every refresh, we should have
+ * the same number of collisions on every iteration. Here using
+ * the yoke() method to refresh data is uneffective; functions 
+ * are always the same, only a call to grow(), for increasing the
+ * number of hash functions, should be used to change the result.
  */
 
 exports.test  = function ( done, assertions ) {
@@ -15,7 +20,7 @@ exports.test  = function ( done, assertions ) {
 			epop: 5000
 			, ilen : 32
 			, hfn : 2
-			, dunce: false
+			, dunce: true
 		}
 		, filepath = __dirname + '/2243-long-english-words.txt'
 		, data = fs.readFileSync( filepath )
@@ -30,6 +35,8 @@ exports.test  = function ( done, assertions ) {
 		, collisions = 0
 		, refresh_attempts = 0
 		, grow_attempts = 0
+		// used to test dunce mode results
+		, prev_collisions = 0
 		;
 
 	log( '\n- reliable assumption: the input data is a set of distinct words (no duplicates)' );
@@ -41,7 +48,7 @@ exports.test  = function ( done, assertions ) {
 
 	// split strings and get max input length
 	// split strings and get max input length
-	for ( ; c < offsets.length; p = 1 + offsets[ c++ ]  )
+	for ( ; c < offsets.length; p = 1 + offsets[ c++ ] )
 		words.push( data.slice( p, offsets[ c ] ) ) && 
 		( max_length = max( max_length, offsets[ c ] - p ) )
 	;
@@ -52,6 +59,8 @@ exports.test  = function ( done, assertions ) {
 	opt.ilen = max_length;
 
 	log( '\n- init bloom filter with:', opt );
+
+	log( '\n-> dunce mode is %s:', opt ? 'on' : 'off' );
 
 	// create bloom filter
 	don = Asino( opt );
@@ -70,6 +79,10 @@ exports.test  = function ( done, assertions ) {
 					// log( '! (%d) suspect: %s', collisions, words[ c ] );
 				} 
 			}
+			if ( prev_collisions ) assert.ok( collisions === prev_collisions, 'dunce mode is off?' );
+			// save the result for the next iteration 
+			prev_collisions = collisions;
+			// no collision, break the cycle
 			if ( ! collisions ) break;
 			// try to refresh pseudo randonm data
 			don.yoke();
@@ -80,13 +93,14 @@ exports.test  = function ( done, assertions ) {
 		}
 		if ( ! collisions ) break;
 		refresh_attempts = 0;
-		// grow only the number of functions
-		don.grow( { hfn : ++opt.hfn } );
+		prev_collisions = 0;
+		// grow the number of functions and mantain dunce mode
+		don.grow( { hfn : ++opt.hfn, dunce : true } );
 		assert.ok( don.hfn === opt.hfn, 'wrong number of functions!! should be: ' + opt.hfn + ' is: ' + don.hfn );
 		log( '\n- try to use %d hash functions (fpp: %d)', don.hfn, don.fpp );
 		++grow_attempts;
 	};
-	if ( ! collisions ) log( '\n -> ok, no collisions! (no false positives!), test passed.' );
+	if ( ! collisions ) log( '\n -> ok, no collisions! (no false positives!), test passed.\n' );
 	assert.ok( ! collisions, 'test failed, no collisions should be found at this point!' );
 
 	exit();
