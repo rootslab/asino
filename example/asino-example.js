@@ -23,6 +23,7 @@ var a = new Buffer( 'Asinus asino pulcherrimus' )
 	, data = [ a, b, c, d, e, f, g ]
 	, i = data.length
 	, reply = false
+	, false_positives = 0
 	;
 
 log( '- init Asino bloom filter\n' );
@@ -40,11 +41,14 @@ log( '  - total space for random table   : %d (KB)\n', don.hash ? don.hash.table
 for ( ; i--; ) {
 	reply = don.key( data [ i ] );
 	log( '\n ? key(%s): %s', data[ i ], reply );
+	if ( reply ) ++false_positives && log( ' ->> false positive! <<-' );
 	reply = don.try( data [ i] );
 	log( ' + try(%s): %s', data[ i ], reply );
 	reply = don.key( data [ i ] );
 	log( ' ? key(%s): %s', data[ i ], reply );
 };
+
+log( '\n- false positives: %d', false_positives );
 
 log( '\n- rank(%d): %d (bits to 1)\n', don.bits, don.vector.items );
 

@@ -68,7 +68,7 @@ exports.test  = function ( done, assertions ) {
 	log( '\n- try to use %d hash functions (fpp: %d)', don.hfn, don.fpp );
 
 	while ( grow_attempts < 10 ) {
-		while ( refresh_attempts < 10 ) {
+		while ( refresh_attempts < 3 ) {
 			collisions = 0;
 			// try to add words
 			c = words.length;
@@ -76,7 +76,7 @@ exports.test  = function ( done, assertions ) {
 				if ( don.try( words [ c ] ) ) {
 					// hash collision detected
 					++collisions;
-					// log( '! (%d) suspect: %s', collisions, words[ c ] );
+					 // log( '! (%d) suspect: %s', collisions, words[ c ] );
 				} 
 			}
 			if ( prev_collisions ) assert.ok( collisions === prev_collisions, 'dunce mode is off?' );
@@ -94,9 +94,10 @@ exports.test  = function ( done, assertions ) {
 		if ( ! collisions ) break;
 		refresh_attempts = 0;
 		prev_collisions = 0;
-		// grow the number of functions and mantain dunce mode
-		don.grow( { hfn : ++opt.hfn, dunce : true } );
+		// grow only the number of functions and mantain current config options
+		don.grow( { hfn : ++opt.hfn } );
 		assert.ok( don.hfn === opt.hfn, 'wrong number of functions!! should be: ' + opt.hfn + ' is: ' + don.hfn );
+		assert.ok( don.epop === opt.epop, 'wrong number for epop!! should be: ' + opt.epop + ' is: ' + don.epop );
 		log( '\n- try to use %d hash functions (fpp: %d)', don.hfn, don.fpp );
 		++grow_attempts;
 	};
