@@ -91,7 +91,7 @@ opt = {
 	 * It is a fast way for testing collisions/duplicates on 
 	 * long inputs ( > ~ 64 bytes ), without the construction
 	 * and the use of pseudo-random table, because it uses a
-	 * crypto digest to simulate 16 doifferent hash functions.
+	 * crypto digest to simulate 16 different hash functions.
 	 *
 	 * However, no randomness is involved for producing values,
 	 * then, for every distinct function (0-15): 
