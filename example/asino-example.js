@@ -3,28 +3,28 @@
  */
 
 var log = console.log
-	, Asino = require( '../' )
-	, don = Asino( {
-		epop: 10
-		, hfn: 2
-		, ilen : 34
-		// enable or disable dunce mode
-		, dunce : !! false
-	} )
-	;
+    , Asino = require( '../' )
+    , don = Asino( {
+        epop: 10
+        , hfn: 2
+        , ilen : 34
+        // enable or disable dunce mode
+        , dunce : !! false
+    } )
+    ;
 
 var a = new Buffer( 'Asinus asino pulcherrimus' )
-	, b = new Buffer( 'Bovem si nequeas, asinum agas' )
-	, c = new Buffer( 'Beati monoculi in terra caecorum' )
-	, d = new Buffer( 'Grege amisso, septa claudere' )
-	, e = new Buffer( 'Asinus esuriens fustem negligit' )
-	, f = new Buffer( 'Aut rex, aut asinus' )
-	, g = new Buffer( 'Guttatim pelagi defluit omnis aqua' )
-	, data = [ a, b, c, d, e, f, g ]
-	, i = data.length
-	, reply = false
-	, false_positives = 0
-	;
+    , b = new Buffer( 'Bovem si nequeas, asinum agas' )
+    , c = new Buffer( 'Beati monoculi in terra caecorum' )
+    , d = new Buffer( 'Grege amisso, septa claudere' )
+    , e = new Buffer( 'Asinus esuriens fustem negligit' )
+    , f = new Buffer( 'Aut rex, aut asinus' )
+    , g = new Buffer( 'Guttatim pelagi defluit omnis aqua' )
+    , data = [ a, b, c, d, e, f, g ]
+    , i = data.length
+    , reply = false
+    , false_positives = 0
+    ;
 
 log( '- init Asino bloom filter\n' );
 
@@ -39,13 +39,13 @@ log( '  - total space for random table   : %d (KB)\n', don.hash ? don.hash.table
 
 
 for ( ; i--; ) {
-	reply = don.key( data [ i ] );
-	log( '\n ? key(%s): %s', data[ i ], reply );
-	if ( reply ) ++false_positives && log( ' ->> false positive! <<-' );
-	reply = don.try( data [ i] );
-	log( ' + try(%s): %s', data[ i ], reply );
-	reply = don.key( data [ i ] );
-	log( ' ? key(%s): %s', data[ i ], reply );
+    reply = don.key( data [ i ] );
+    log( '\n ? key(%s): %s', data[ i ], reply );
+    if ( reply ) ++false_positives && log( ' ->> false positive! <<-' );
+    reply = don.try( data [ i] );
+    log( ' + try(%s): %s', data[ i ], reply );
+    reply = don.key( data [ i ] );
+    log( ' ? key(%s): %s', data[ i ], reply );
 };
 
 log( '\n- false positives: %d', false_positives );
