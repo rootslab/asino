@@ -171,7 +171,7 @@ Asino#yoke() : Asino
  */
 Asino#grow( [ Object opt ] ) : Asino
 
-opt : { [ hfn: Number ,] [epop: Number ,] [ilen : Number,] [dunce: Boolean] }
+opt : { [ hfn: Number ] [, epop: Number] [, ilen : Number] [, dunce: Boolean] }
 
 
 ```
