@@ -73,7 +73,7 @@ exports.test  = function ( done, assertions ) {
                 } 
             }
             if ( ! collisions ) break;
-            // try to refresh pseudo randonm data
+            // try to refresh pseudo random data
             don.yoke();
             assert.ok( don.vector.items === 0, 'bloom filter should be empty!' ); 
             assert.ok( don.vector.rank( don.bits ) === 0, 'bloom filter should be empty!' ); 

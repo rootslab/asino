@@ -2,7 +2,7 @@
 
 [![NPM VERSION](http://img.shields.io/npm/v/asino.svg?style=flat)](https://www.npmjs.org/package/asino)
 [![CODACY BADGE](https://img.shields.io/codacy/b18ed7d95b0a4707a0ff7b88b30d3def.svg?style=flat)](https://www.codacy.com/public/44gatti/asino)
-[![CODECLIMATE-TEST-COVERAGE](https://img.shields.io/codeclimate/coverage/github/rootslab/asino.svg?style=flat)](https://codeclimate.com/github/rootslab/asino)
+[![CODECLIMATE-TEST-COVERAGE](https://img.shields.io/codeclimate/c/rootslab/asino.svg?style=flat)](https://codeclimate.com/github/rootslab/asino)
 [![LICENSE](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/rootslab/asino#mit-license)
 
 ![NODE VERSION](https://img.shields.io/node/v/asino.svg)
@@ -12,6 +12,7 @@
 
 [![NPM MONTHLY](http://img.shields.io/npm/dm/asino.svg?style=flat)](http://npm-stat.com/charts.html?package=asino)
 ![NPM YEARLY](https://img.shields.io/npm/dy/asino.svg)
+[![NPM TOTAL](https://img.shields.io/npm/dt/asino.svg)](http://npm-stat.com/charts.html?package=asino)
 
 [![NPM GRAPH](https://nodei.co/npm/asino.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/asino/)
 
