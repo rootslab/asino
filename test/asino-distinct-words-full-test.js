@@ -76,7 +76,7 @@ exports.test  = function ( done, assertions ) {
             // try to refresh pseudo random data
             don.yoke();
             assert.ok( don.vector.items === 0, 'bloom filter should be empty!' ); 
-            assert.ok( don.vector.rank( don.bits ) === 0, 'bloom filter should be empty!' ); 
+            assert.ok( don.vector.rank( don.bits ) === 0, 'bloom filter should be empty!' );
             log( '- attempt %d, suspects: %d', 1 + refresh_attempts, collisions );
             ++refresh_attempts;
         }
